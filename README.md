@@ -129,20 +129,20 @@ kubectl apply -f springboot.yaml
 
 Check if application is running
 ```
-kubectl get po -n my-app
-NAME                            READY   STATUS    RESTARTS   AGE
-my-app-v011-nk7mf             1/1     Running   0          114m
+$ kubectl get po -n my-app
+NAME                          READY   STATUS    RESTARTS   AGE
+springboot-74c6664448-4blvx   1/1     Running   0          13s
 ```
 ```
 kubectl get svc -n my-app
-NAME                  TYPE           CLUSTER-IP       EXTERNAL-IP                                                                    PORT(S)        AGE
-my-app              LoadBalancer   10.100.200.128   a69e152e54f124a58abd2972f94589d5-2041595907.ap-southeast-1.elb.amazonaws.com   80:31841/TCP   17d
+NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+springboot   ClusterIP   10.105.151.229   <none>        8080/TCP   39s
 ```
 
 In case the external IP shows <PENDING> it implies that the cluster does not provide a Loadbalancer, in that case you can build a proxy to the concerned service
 
 ```
-kubectl port-forward  -n my-app svc/my-app 8080:80
+kubectl port-forward  -n my-app svc/my-app 8080:8080
 Forwarding from 127.0.0.1:8080 -> 3000
 Forwarding from [::1]:8080 -> 3000
 Handling connection for 8080
@@ -151,4 +151,5 @@ Handling connection for 8080
 Access the application
 ```
 curl localhost:8080
+Hello Docker World
 ```

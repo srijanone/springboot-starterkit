@@ -50,5 +50,5 @@ spec:
       serviceAccountName: springboot
       containers:
       - name: springboot
-        image: athakur/springboot
+        image: athakur/springboot:v1
 ---
